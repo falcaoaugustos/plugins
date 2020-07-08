@@ -296,6 +296,9 @@ static const int SOURCE_GALLERY = 1;
       image = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
 
+    // Use picker data here
+    // picker.cameraDevice == CameraDevice.front;
+
     NSNumber *maxWidth = [_arguments objectForKey:@"maxWidth"];
     NSNumber *maxHeight = [_arguments objectForKey:@"maxHeight"];
     NSNumber *imageQuality = [_arguments objectForKey:@"imageQuality"];

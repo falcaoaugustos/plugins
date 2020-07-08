@@ -471,7 +471,7 @@ public class ImagePickerDelegate
         handleChooseImageResult(resultCode, data);
         break;
       case REQUEST_CODE_TAKE_IMAGE_WITH_CAMERA:
-        handleCaptureImageResult(resultCode);
+        handleCaptureImageResult(resultCode, data);
         break;
       case REQUEST_CODE_CHOOSE_VIDEO_FROM_GALLERY:
         handleChooseVideoResult(resultCode, data);
@@ -508,8 +508,13 @@ public class ImagePickerDelegate
     finishWithSuccess(null);
   }
 
-  private void handleCaptureImageResult(int resultCode) {
+  private void handleCaptureImageResult(int resultCode, Intent data) {
     if (resultCode == Activity.RESULT_OK) {
+      // check cameraDevice instance, if it's updated by the external activity
+      Log.d("Image Picker Delegate Debug", cameraDevice);
+      // check intent data
+      Log.d("Image Picker Delegate Debug", data);
+
       fileUriResolver.getFullImagePath(
           pendingCameraMediaUri != null
               ? pendingCameraMediaUri
