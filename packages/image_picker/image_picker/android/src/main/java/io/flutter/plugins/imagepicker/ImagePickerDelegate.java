@@ -14,6 +14,7 @@ import android.media.MediaScannerConnection;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.util.Log;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
@@ -511,9 +512,9 @@ public class ImagePickerDelegate
   private void handleCaptureImageResult(int resultCode, Intent data) {
     if (resultCode == Activity.RESULT_OK) {
       // check cameraDevice instance, if it's updated by the external activity
-      Log.d("Image Picker Delegate Debug", cameraDevice);
+      Log.d("Image Picker Delegate Debug", String.format("Camera device: %s", cameraDevice));
       // check intent data
-      Log.d("Image Picker Delegate Debug", data);
+      Log.d("Image Picker Delegate Debug", String.format("data: %s", data));
 
       fileUriResolver.getFullImagePath(
           pendingCameraMediaUri != null
